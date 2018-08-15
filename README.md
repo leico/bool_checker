@@ -103,6 +103,16 @@ struct impl< true, Tail... > {
 ## example
 
 ```cpp
+struct A : public std :: true_type  {  };
+struct B : public std :: false_type {  };
+struct C : public std :: true_type  {  }; 
+struct D : public std :: false_type {  };
+
+void print(const bool value){
+  std :: cout << std :: boolalpha << value << std :: endl;
+}
+...
+
   print( bool_checker :: ored < > :: value ); //false
   print( bool_checker :: anded< > :: value ); //false
 
