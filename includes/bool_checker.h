@@ -27,6 +27,8 @@
 #ifndef bool_checker_h
 #define bool_checker_h
 
+#include <utility> 
+
 namespace bool_checker { 
 
   //ored returned true if bool parameters has a true, otherwise false
@@ -63,7 +65,7 @@ namespace bool_checker {
   };
 
 
-  //anded returned true if all bool parameters are true, othewise false
+  //anded returned true if all bool parameters are true, othewise false, but sizeof...(Args) == 0 returned false
   template < bool... Args > 
   struct anded { 
     private:
@@ -84,7 +86,7 @@ namespace bool_checker {
       };
 
     public: 
-    static constexpr bool value = impl< Args... > :: value; 
+    static constexpr bool value = sizeof...( Args ) == 0 ? false : impl< Args... > :: value; 
   };
 
   //anded_t returned true if Args :: value ... are true, otherwise false

@@ -40,6 +40,9 @@ void print(const bool value){
 
 int main(int argc, const char * argv[]) {
 
+  print( bool_checker :: ored < > :: value ); //false
+  print( bool_checker :: anded< > :: value ); //false
+
   print( bool_checker :: ored< false, false, false >       :: value ); //false
   print( bool_checker :: ored< false, false, false, true > :: value ); //true
 
