@@ -102,4 +102,26 @@ struct impl< true, Tail... > {
 
 ## example
 
+```cpp
+  print( bool_checker :: ored < > :: value ); //false
+  print( bool_checker :: anded< > :: value ); //false
 
+  print( bool_checker :: ored< false, false, false >       :: value ); //false
+  print( bool_checker :: ored< false, false, false, true > :: value ); //true
+
+  print( bool_checker :: anded< true, false, true, false, true > :: value ); //false
+  print( bool_checker :: anded< true, true >                     :: value ); //true
+
+  print( bool_checker :: ored_t< B, C, D >                 :: value ); //true
+  print( bool_checker :: ored_t< B, D, std :: false_type > :: value ); //false
+
+  print( bool_checker :: anded_t< A, C, std :: true_type > :: value ); //true
+  print( bool_checker :: anded_t< A, B, C, D >             :: value ); //false
+
+  //true
+  print( 
+    bool_checker :: anded_t< 
+        bool_checker :: ored_t< A, B >
+      , bool_checker :: ored_t< C, D >
+> :: value ); 
+```
