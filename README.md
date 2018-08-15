@@ -123,5 +123,5 @@ struct impl< true, Tail... > {
     bool_checker :: anded_t< 
         bool_checker :: ored_t< A, B >
       , bool_checker :: ored_t< C, D >
-> :: value ); 
+    > :: value ); 
 ```
