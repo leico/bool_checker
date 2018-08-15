@@ -1,6 +1,7 @@
 
-# type_finder
+# bool_checker
 
+provide and/or function between variadic template parameters
 
 ## functions
 
