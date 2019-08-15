@@ -1,5 +1,5 @@
 //
-//  has_member_type.h
+//  has_member_function.h
 //
 // MIT License
 // 
@@ -23,29 +23,38 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#ifndef leico_cpp_utility_has_member_type_h
-#define leico_cpp_utility_has_member_type_h
+#ifndef leico_cpp_utility_has_member_function_h
+#define leico_cpp_utility_has_member_function_h
 
-namespace leico_cpp_utility{
-namespace has_member_type {
 
-#define LEICO_CPP_UTILITY_HAS_MEMBER_TYPE( MemberType ) \
+namespace leico_cpp_utility { 
+namespace has_member_function { 
+
+#define LEICO_CPP_UTILITY_HAS_MEMBER_FUNCTION( FunctionName, UniqueID, ... ) \
 template < typename T > \
-class MemberType { \
+class FunctionName##UniqueID { \
 \
-template < typename Arg > \
-static std :: false_type impl( ... ); \
+  template< typename Arg > \
+  static auto impl( ... ) -> std :: false_type; \
 \
-template < typename Arg > \
-static std :: true_type impl( typename Arg :: MemberType* ); \
+  template < typename Arg > \
+  static auto impl( Arg* ) -> \
+  decltype( \
+      std :: declval < Arg >() . FunctionName( __VA_ARGS__ ) \
+    , std :: true_type() \
+  ); \
 \
-public: \
-static constexpr bool value = decltype( impl< T >( nullptr ) ) :: value; \
+  public: \
+    static constexpr bool value = decltype( impl< T >(nullptr) ) :: value ; \
 };
 
-LEICO_CPP_UTILITY_HAS_MEMBER_TYPE( value_type ); // generate has_member_type :: value_type< T > :: value;
-LEICO_CPP_UTILITY_HAS_MEMBER_TYPE( iterator );   // generate has_member_type :: iterator  < T > :: value;
+LEICO_CPP_UTILITY_HAS_MEMBER_FUNCTION( size,,  ); // check is T.size()  exist
+LEICO_CPP_UTILITY_HAS_MEMBER_FUNCTION( begin,, ); // check is T.begin() exist
+LEICO_CPP_UTILITY_HAS_MEMBER_FUNCTION( end,,   ); // check is T.end()   exist
+LEICO_CPP_UTILITY_HAS_MEMBER_FUNCTION( empty,, ); // check is T.empty() exist
+
+
 }
 }
 
-#endif /* leico_cpp_utility_has_member_type_h */
+#endif /* leico_cpp_utility_has_member_function_h */
