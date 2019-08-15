@@ -24,11 +24,12 @@
 // SOFTWARE.
 
 
-#ifndef bool_checker_h
-#define bool_checker_h
+#ifndef leico_cpp_utility_bool_checker_h
+#define leico_cpp_utility_bool_checker_h
 
 #include <utility> 
 
+namespace leico_cpp_utility {
 namespace bool_checker { 
 
   //ored returned true if bool parameters has a true, otherwise false
@@ -98,6 +99,6 @@ namespace bool_checker {
 
 
 }
+}
 
-
-#endif /* bool_checker_h */
+#endif /* leico_cpp_utility_bool_checker_h */

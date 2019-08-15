@@ -40,6 +40,8 @@ void print(const bool value){
 
 int main(int argc, const char * argv[]) {
 
+  namespace bool_checker = leico_cpp_utility :: bool_checker;
+
   print( bool_checker :: ored < > :: value ); //false
   print( bool_checker :: anded< > :: value ); //false
 
