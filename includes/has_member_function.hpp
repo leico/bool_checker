@@ -26,7 +26,6 @@
 #ifndef leico_cpp_utility_has_member_function_h
 #define leico_cpp_utility_has_member_function_h
 
-
 namespace leico_cpp_utility { 
 namespace has_member_function { 
 
@@ -52,7 +51,11 @@ LEICO_CPP_UTILITY_HAS_MEMBER_FUNCTION( size,,  ); // check is T.size()  exist
 LEICO_CPP_UTILITY_HAS_MEMBER_FUNCTION( begin,, ); // check is T.begin() exist
 LEICO_CPP_UTILITY_HAS_MEMBER_FUNCTION( end,,   ); // check is T.end()   exist
 LEICO_CPP_UTILITY_HAS_MEMBER_FUNCTION( empty,, ); // check is T.empty() exist
+LEICO_CPP_UTILITY_HAS_MEMBER_FUNCTION( clear,, ); // check is T.clear() exist
 
+LEICO_CPP_UTILITY_HAS_MEMBER_FUNCTION( resize,, 0 ); // check is T.resize() exist
+
+LEICO_CPP_UTILITY_HAS_MEMBER_FUNCTION( push_back,, typename T :: value_type() ) // check is T.push_back( T :: value_type() ) exists
 
 }
 }
